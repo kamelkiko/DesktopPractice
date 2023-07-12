@@ -30,7 +30,7 @@ val module = module {
 
     single { GetPostsUseCase(get()) }
 
-    single { PostsViewModel(get()) }
+    single { PostsViewModel() }
 
 }
 
