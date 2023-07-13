@@ -7,6 +7,7 @@ import data.repo.PostRepo
 import domain.usecase.GetPostsUseCase
 import io.ktor.client.*
 import io.ktor.client.engine.java.*
+import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.serialization.gson.*
 import org.koin.core.Koin
@@ -16,11 +17,16 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import presentation.post.PostsViewModel
 
+
+private const val BASE_URL = "https://jsonplaceholder.typicode.com"
 val module = module {
     single {
         HttpClient(Java) {
             install(ContentNegotiation) {
                 gson()
+            }
+            defaultRequest {
+                url(BASE_URL)
             }
         }
     }

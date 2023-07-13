@@ -5,8 +5,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.net.URL
 
-data class Location(val loc: String)
-
 class LocationManager {
     suspend fun getLocation(): Location {
         return withContext(Dispatchers.IO) {
@@ -18,3 +16,5 @@ class LocationManager {
         }
     }
 }
+
+data class Location(val loc: String)
