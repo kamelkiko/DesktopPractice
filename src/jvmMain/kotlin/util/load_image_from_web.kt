@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import io.ktor.client.*
@@ -36,6 +37,7 @@ fun loadImage() {
         modifier = Modifier.width(200.dp)
     )
 }
+
 @Composable
 fun loadSvg() {
     val density = LocalDensity.current
@@ -123,4 +125,9 @@ private suspend fun loadImageBitmap(url: String): ImageBitmap =
 
 private suspend fun urlStream(url: String) = HttpClient(Java).use {
     ByteArrayInputStream(it.get(url).body())
+}
+
+@Composable
+fun loadImageFromResource() {
+    Image(painter = painterResource("batman.jpg"), contentDescription = null)
 }
